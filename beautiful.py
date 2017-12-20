@@ -34,7 +34,7 @@ def cncorpus(args):
         html1 = requests.post('http://ictclas.nlpir.org/nlpir/index/getAllContentNew.do', data = data)
         html = html1.text    
         soup = BeautifulSoup(html,"lxml")
-        return(soup.get_text())
+        return(eval(soup.get_text())['dividewords'])
 fo = open("../prepare.txt", "r")
 file=open('output.txt','w') 
 for line in fo.readlines():                          
