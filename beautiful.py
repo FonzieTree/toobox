@@ -42,7 +42,6 @@ fo = open("../input.txt", "r")
 file=open('cas.txt','w')
 i = 0 
 for line in fo.readlines():                         
-    time.sleep(random.randint(1,10))
     line = line.strip()                              
     args = '正正正正正正正正正正正正正正正正正正正正正正正正正正正正正正'+line.split()[0]
     corpus = cncorpus(args)[120:]
