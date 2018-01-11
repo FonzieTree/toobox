@@ -3,7 +3,6 @@ import requests
 from bs4 import BeautifulSoup  
 from urllib import request
 import os
-os.chdir('D:\\wang\\grcbank')
 r=requests.get("...")  
 r.encoding=r.apparent_encoding  
 file = open('result.txt','w')
