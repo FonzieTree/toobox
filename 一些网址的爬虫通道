@@ -1,5 +1,5 @@
 # 百度词典朗读
 1.单个词的音 http://appcdn.fanyi.baidu.com/zhdict/mp3/bai3.mp3
 如要爬“好”，将“bai3”改为hao3即可
-2.多个词的音 https://ss0.baidu.com/6KAZsjip0QIZ8tyhnq/text2audio?tex=%E6%95%B0%28shu4%29%E9%87%8F%28liang4%29&cuid=dict&lan=ZH&ctp=1&pdt=30&vol=9&spd=4
+2.多个词的音 https://ss0.baidu.com/6KAZsjip0QIZ8tyhnq/text2audio?tex=我觉得我挺帅的%28&cuid=dict&lan=ZH&ctp=1&pdt=30&vol=9&spd=4
 如要爬“数据”，将shu4,liang4分别改为shu4,ju4即可
