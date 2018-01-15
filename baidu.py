@@ -17,12 +17,23 @@ text = soup.get_text().split()
 # -*- coding:utf-8 -*- 
 import requests
 from bs4 import BeautifulSoup
-import time
-import random
+import re
 result = []
-html = requests.post('http://hanyu.baidu.com/zici/s?wd='+'百'+'&query='+'百'+'&srcid=28232&from=kg0&from=kg0')
-html.encoding = html.apparent_encoding 
-html = html.text
-soup = BeautifulSoup(html,"lxml")
-text = soup.find_all('div', class_='tab-content')
-BeautifulSoup(content,"lxml")
+def baidu(data):
+    html = requests.post('http://hanyu.baidu.com/zici/s?wd='+data+'&query='+data+'&srcid=28232&from=kg0&from=kg0')
+    html.encoding = html.apparent_encoding 
+    html = html.text
+    soup = BeautifulSoup(html,"lxml")
+    return(data+'，'+soup.p.contents[0][2:]+'。')
+i = 0
+with open(r'../input.txt','r',encoding='utf-8') as file:
+    with open('../baiducidian.txt','w', encoding='utf-8') as baiducidian:
+        chars = file.readlines()
+        for char in chars:
+            data = char.strip()
+            line = baidu(data)
+            baiducidian.write(line)
+            baiducidian.write("\n")
+            baiducidian.flush()
+            i += 1
+            print(i)
