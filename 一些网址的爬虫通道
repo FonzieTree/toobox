@@ -9,3 +9,6 @@ https://rate.tmall.com/list_detail_rate.htm?itemId=546724870335&sellerId=3170729
 
 #京东用户评论
 https://sclub.jd.com/comment/productPageComments.action?callback=fetchJSON_comment98vv23827&productId=1458843&score=0&sortType=5&page=0&pageSize=10&isShadowSku=0&fold=1
+
+#qq音乐文件爬取通道
+http://dl.stream.qqmusic.qq.com/C400002fdYeD26NRKY.m4a?vkey=6B04C2A7686C937828ED9BB42839145D2E4ECB71BBC3F21272BB65A879456811DA42A6597C3D0EAF1BAC4CE2EDD02A6527C49B5486FFAA04&guid=4845466680&uin=0&fromtag=66
