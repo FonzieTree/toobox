@@ -43,4 +43,4 @@ html = requests.post('http://www.aihanyu.org/cncorpus/CnCindex.aspx', data = dat
 html = html.text    
 soup = BeautifulSoup(html,"lxml")
 text = soup.get_text()
-re.findall(r'\n\n\d+(.*)',text)
+text = re.findall(r'\n\n\d+ (.*) ',text)
