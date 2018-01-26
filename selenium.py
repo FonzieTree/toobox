@@ -8,7 +8,6 @@ inputElement = browser.find_elements_by_class_name("com-txt")[0]
 inputElement.clear()
 inputElement.send_keys('中文分词项目(开源/API接口)总结 - CSDN博客')
 inputElement.send_keys(Keys.ENTER)
-outputElement = browser.find_elements_by_class_name("result-left")
-text = outputElement[0].text
-text = re.findall(r'\w+\n', text)
-print(text)
+outputElement = browser.find_elements_by_class_name("result-tips")
+output = [e.text for e in outputElement]
+print(output)
