@@ -1,31 +1,32 @@
 # -*- coding:utf8 -*-
-# 爬取阿里巴巴的商品信息
 import requests
 import json
-def getCommodityComments(url):
-    if url[url.find('id=')+14] != '&':
-        id = url[url.find('id=')+3:url.find('id=')+15]
-    else:
-        id = url[url.find('id=')+3:url.find('id=')+14]
-    url = 'https://rate.taobao.com/feedRateList.htm?auctionNumId='+id+'&currentPageNum=1'
-    res = requests.get(url)
-    jc = json.loads(res.text.strip().strip('()'))
-    max = jc['total']
-    users = []
-    comments = []
-    count = 0
-    page = 1
-    print('该商品共有评论'+str(max)+'条,具体如下: loading...')
-    while count<max:
-        res = requests.get(url[:-1]+str(page))
-        page = page + 1
+import csv
+idx = '546724870335'
+page = 1
+with open('546724870335.csv', 'w') as csvfile:
+    writer = csv.writer(csvfile)
+    writer.writerow(['date','content','rateId','user_nick','user_rank','user_vipLevel','auction_link','auction_aucNumId','auction_sku'])
+    while(1):
+        url = 'https://rate.taobao.com/feedRateList.htm?auctionNumId='+idx+'&currentPageNum=' + str(page)
+        res = requests.get(url)
         jc = json.loads(res.text.strip().strip('()'))
-        jc = jc['comments']
-        for j in jc:
-            users.append(j['user']['nick'])
-            comments.append( j['content'])
-            print(count+1,'>>',users[count],'\n        ',comments[count])
-            count = count + 1
-
-getCommodityComments('https://item.taobao.com/item.htm?id=546724870335&')
-
+        if jc['total'] == 0:
+            print('Done')
+            break
+        else:
+            jc = jc['comments']
+            for j in range(len(jc)):
+                date = jc[j]['date']
+                content = jc[j]['content']
+                rateId = jc[j]['rateId']
+                user_nick = jc[j]['user']['nick']
+                user_rank = jc[j]['user']['rank']
+                user_vipLevel = jc[j]['user']['vipLevel']
+                auction_link = jc[j]['auction']['link']
+                auction_aucNumId = jc[j]['auction']['aucNumId']
+                auction_sku = jc[j]['auction']['sku']
+                writer.writerow([date, content, rateId, user_nick, user_rank, user_vipLevel, auction_link, auction_aucNumId, auction_sku])
+        print(page, ' pages finished')
+        page += 1
+        
