@@ -49,12 +49,11 @@ import random
 from selenium import webdriver              
 from selenium.webdriver.common.keys import Keys 
 os.chdir(r'./')
-profile.update_preferences()
 browser = webdriver.Firefox('./Mozilla Firefox')
 browser.get('http://ai.baidu.com/tech/nlp/lexical')  
 inputElement = browser.find_elements_by_class_name("com-txt")[0]
 i = 0
-with open('result.txt','w') as file1:
+with open('result.txt','a') as file1:
     with open('data.txt','r',encoding='utf-8') as file2:
         data = file2.readlines()
         for line in data:
@@ -71,7 +70,7 @@ with open('result.txt','w') as file1:
             file1.flush()
             i += 1
             if i % 500 == 0:
-                time.sleep(3600)	
+                time.sleep(360)	
             print(output)
             
 print('Done')
