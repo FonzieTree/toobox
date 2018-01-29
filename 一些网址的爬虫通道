@@ -12,3 +12,9 @@ https://sclub.jd.com/comment/productPageComments.action?callback=fetchJSON_comme
 
 #qq音乐文件爬取通道
 http://dl.stream.qqmusic.qq.com/C400002fdYeD26NRKY.m4a?vkey=6B04C2A7686C937828ED9BB42839145D2E4ECB71BBC3F21272BB65A879456811DA42A6597C3D0EAF1BAC4CE2EDD02A6527C49B5486FFAA04&guid=4845466680&uin=0&fromtag=66
+
+#nuance
+https://www.neospeech.com/
+http://neospeech.com/service/demo?voiceId=1&content=Greetings! This is Paul. Thank you for testing my voice. Type any text you wish to be spoken here.
+得到如下：
+{"result":"successful","audioUrl":"\/service\/play-demo?id=5120550&vts4audio=http:\/\/media.neospeech.com\/audio\/vts\/preview\/2018-01-28\/T18\/result-paul-5a6e8de90a975a4a16173100.mp3"}
