@@ -63,6 +63,6 @@ voices = [{"languageTypeId":"1","languageName":"US English","voiceId":"1","name"
 {"languageTypeId":"14","languageName":"Italian","voiceId":"48","name":"Roberto","gender":"M","ttsValue":"1301","ttsDemoText":"Salve! \u00e8 Roberto che parla. Grazie per testare la mia voce. Per favore, digita di seguito quello che vuoi che io dica."},
 {"languageTypeId":"15","languageName":"European French","voiceId":"49","name":"Roxane","gender":"F","ttsValue":"1400","ttsDemoText":"Salut, C'est Roxane. Je vous remercie de tester ma voix. Veuillez taper le texte que vous souhaitez faire prononcer ici."},
 {"languageTypeId":"15","languageName":"European French","voiceId":"50","name":"Louis","gender":"M","ttsValue":"1401","ttsDemoText":"Salut, C'est Louis. Je vous remercie de tester ma voix. Veuillez taper le texte que vous souhaitez faire prononcer ici."}];
-http://neospeech.com/service/demo?voiceId=1&content=Greetings! This is Paul. Thank you for testing my voice. Type any text you wish to be spoken here.
+https://neospeech.com/service/demo?languageTypeId=9&languageName=Cantonese&voiceId=37&name=Kaho&gender=M&ttsValue=801&content=%E4%BD%A0%E5%9C%A8%E5%B9%B2%E5%95%A5%E5%95%8A
 得到如下：
-{"result":"successful","audioUrl":"\/service\/play-demo?id=5120550&vts4audio=http:\/\/media.neospeech.com\/audio\/vts\/preview\/2018-01-28\/T18\/result-paul-5a6e8de90a975a4a16173100.mp3"}
+{"result":"successful","audioUrl":"\/service\/play-demo?id=5120550&vts4audio=http:\/\/media.neospeech.com\/audio\/vts\/preview\/2018-01-28\/T19\/result-kaho-5a6e93eb0a975a4a16173286.mp3"}
