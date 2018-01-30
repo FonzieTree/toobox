@@ -15,20 +15,22 @@ print(output)
 
 
 # -*- coding: utf-8 -*-                  
-import re
 import os
-import time                   
+import time
+import random                   
 from selenium import webdriver              
 from selenium.webdriver.common.keys import Keys 
-os.chdir(r'..')
-browser = webdriver.Firefox('./Mozilla Firefox')
-browser.get('http://ai.baidu.com/tech/nlp/lexical')  
-inputElement = browser.find_elements_by_class_name("com-txt")[0]
-inputElement.clear()
-with open('result.txt','w') as file1:
+os.chdir(r'D:\wang\国家语委')
+browser = webdriver.Firefox('D:/Program Files/Mozilla Firefox')
+i = 0
+with open('result.txt','a') as file1:
     with open('data.txt','r',encoding='utf-8') as file2:
         data = file2.readlines()
+        data = data[i:]
         for line in data:
+            browser.get('https://www.sogou.com/')
+            browser.get('http://ai.baidu.com/tech/nlp/lexical')
+            inputElement = browser.find_elements_by_class_name("com-txt")[0]
             time.sleep(1)
             line = ''.join(line[17:].strip().split())
             inputElement.clear()
@@ -40,5 +42,8 @@ with open('result.txt','w') as file1:
             file1.write(output)
             file1.write('\n')
             file1.flush()
-            print(output)
+            i += 1
+            #if i % 500 == 0:
+            #    time.sleep(3600)	
+            print(i, output)
 print('Done')
