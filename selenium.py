@@ -30,6 +30,7 @@ with open('result.txt','a') as file1:
         for line in data:
             if i % 10 == 0:
                 browser.get('https://www.sogou.com/')
+                time.sleep(0.5)
                 browser.get('http://ai.baidu.com/tech/nlp/lexical')
                 time.sleep(random.randint(8,10))
             try:
