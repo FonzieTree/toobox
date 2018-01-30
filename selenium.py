@@ -31,7 +31,8 @@ with open('result.txt','a') as file1:
             if i % 10 == 0:
                 browser.get('https://www.sogou.com/')
                 browser.get('http://ai.baidu.com/tech/nlp/lexical')
-                time.sleep(random.randint(10))
+                time.sleep(random.randint(8,10))
+            time.sleep(1.5)
             inputElement = browser.find_elements_by_class_name("com-txt")[0]
             line = ''.join(line[17:].strip().split())
             inputElement.clear()
@@ -44,7 +45,5 @@ with open('result.txt','a') as file1:
             file1.write('\n')
             file1.flush()
             i += 1
-            #if i % 500 == 0:
-            #    time.sleep(3600)	
             print(i, output)
 print('Done')
