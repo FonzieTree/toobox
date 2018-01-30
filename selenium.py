@@ -22,7 +22,7 @@ from selenium.webdriver.common.keys import Keys
 os.chdir(r'...')
 browser = webdriver.Firefox('D:/Program Files/Mozilla Firefox')
 browser.get('http://ai.baidu.com/tech/nlp/lexical')
-i = 0
+i = 9449
 with open('result.txt','a') as file1:
     with open('data.txt','r',encoding='utf-8') as file2:
         data = file2.readlines()
@@ -32,12 +32,12 @@ with open('result.txt','a') as file1:
                 browser.get('https://www.sogou.com/')
                 browser.get('http://ai.baidu.com/tech/nlp/lexical')
                 time.sleep(random.randint(8,10))
-            time.sleep(1.5)
             inputElement = browser.find_elements_by_class_name("com-txt")[0]
             line = ''.join(line[17:].strip().split())
             inputElement.clear()
             inputElement.send_keys(line)
             inputElement.send_keys(Keys.ENTER)
+            time.sleep(1)
             outputElement = browser.find_elements_by_class_name("result-tips")
             output = ['/'.join(e.text.split('\n')) for e in outputElement]
             output = ' '.join(output)
