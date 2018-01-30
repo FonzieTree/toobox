@@ -13,25 +13,26 @@ output = [e.text for e in outputElement]
 print(output)
 
 
-
 # -*- coding: utf-8 -*-                  
 import os
 import time
 import random                   
 from selenium import webdriver              
 from selenium.webdriver.common.keys import Keys 
-os.chdir(r'D:\wang\国家语委')
+os.chdir(r'...')
 browser = webdriver.Firefox('D:/Program Files/Mozilla Firefox')
+browser.get('http://ai.baidu.com/tech/nlp/lexical')
 i = 0
 with open('result.txt','a') as file1:
     with open('data.txt','r',encoding='utf-8') as file2:
         data = file2.readlines()
         data = data[i:]
         for line in data:
-            browser.get('https://www.sogou.com/')
-            browser.get('http://ai.baidu.com/tech/nlp/lexical')
+            if i % 10 == 0:
+                browser.get('https://www.sogou.com/')
+                browser.get('http://ai.baidu.com/tech/nlp/lexical')
+                time.sleep(random.randint(10))
             inputElement = browser.find_elements_by_class_name("com-txt")[0]
-            time.sleep(1)
             line = ''.join(line[17:].strip().split())
             inputElement.clear()
             inputElement.send_keys(line)
