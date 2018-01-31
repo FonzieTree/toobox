@@ -7,7 +7,7 @@ from selenium.webdriver.common.keys import Keys
 os.chdir(r'...')
 browser = webdriver.Firefox('D:/Program Files/Mozilla Firefox')
 browser.get('http://ai.baidu.com/tech/nlp/lexical')
-i = 0
+i = 23745
 with open('result.txt','a') as file1:
     with open('data.txt','r',encoding='utf-8') as file2:
         data = file2.readlines()
@@ -19,7 +19,7 @@ with open('result.txt','a') as file1:
                 inputElement.clear()
                 inputElement.send_keys(line)
                 inputElement.send_keys(Keys.ENTER)
-                time.sleep(1.5)
+                time.sleep(3)
                 outputElement = browser.find_elements_by_class_name("result-tips")
                 output = ['/'.join(e.text.split('\n')) for e in outputElement]
                 output = ' '.join(output)
@@ -30,10 +30,10 @@ with open('result.txt','a') as file1:
                 i += 1
                 if output == '':
                     print('Null value')
-                    browser.get('https://www.sogou.com/')
                     browser.quit()
-                    time.sleep(5)
                     browser = webdriver.Firefox('D:/Program Files/Mozilla Firefox')
+                    browser.get('https://www.sogou.com/')
+                    time.sleep(5)
                     browser.get('http://ai.baidu.com/tech/nlp/lexical')
             except:
                 print('Exception')
@@ -41,5 +41,6 @@ with open('result.txt','a') as file1:
                 browser.quit()
                 time.sleep(5)
                 browser = webdriver.Firefox('D:/Program Files/Mozilla Firefox')
+                browser.get('https://www.sogou.com/')
                 browser.get('http://ai.baidu.com/tech/nlp/lexical')
 print('Done')
