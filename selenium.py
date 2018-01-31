@@ -7,7 +7,7 @@ from selenium.webdriver.common.keys import Keys
 os.chdir(r'...')
 browser = webdriver.Firefox('D:/Program Files/Mozilla Firefox')
 browser.get('http://ai.baidu.com/tech/nlp/lexical')
-i = 9449
+i = 26537
 with open('result.txt','a') as file1:
     with open('data.txt','r',encoding='utf-8') as file2:
         data = file2.readlines()
@@ -33,6 +33,9 @@ with open('result.txt','a') as file1:
                 file1.flush()
                 i += 1
                 print(i, output)
+                if output == '':
+                    browser.close()
+                    browser.get('http://ai.baidu.com/tech/nlp/lexical')
             except:
                 pass
 print('Done')
