@@ -4,10 +4,10 @@ import time
 import random                   
 from selenium import webdriver              
 from selenium.webdriver.common.keys import Keys 
-os.chdir(r'...')
+os.chdir(r'D:\')
 browser = webdriver.Firefox('D:/Program Files/Mozilla Firefox')
 browser.get('http://ai.baidu.com/tech/nlp/lexical')
-i = 0
+i = 19959
 with open('result.txt','a') as file1:
     with open('data.txt','r',encoding='utf-8') as file2:
         data = file2.readlines()
@@ -15,9 +15,9 @@ with open('result.txt','a') as file1:
         for line in data:
             if i % 10 == 0:
                 browser.get('https://www.sogou.com/')
-                time.sleep(0.5)
+                time.sleep(0.1)
                 browser.get('http://ai.baidu.com/tech/nlp/lexical')
-                time.sleep(random.randint(8,10))
+                time.sleep(5)
             try:
                 inputElement = browser.find_elements_by_class_name("com-txt")[0]
                 line = ''.join(line[17:].strip().split())
@@ -32,13 +32,21 @@ with open('result.txt','a') as file1:
                 file1.write('\n')
                 file1.flush()
                 i += 1
-                print(i, output)
                 if output == '':
+                    print('Null value')
+                    browser.get('https://www.sogou.com/')
+                    time.sleep(0.1)
                     browser.close()
                     browser = webdriver.Firefox('D:/Program Files/Mozilla Firefox')
                     browser.get('http://ai.baidu.com/tech/nlp/lexical')
+                    time.sleep(5)
+                print(i, output)
             except:
-                    browser.close()
-                    browser = webdriver.Firefox('D:/Program Files/Mozilla Firefox')
-                    browser.get('http://ai.baidu.com/tech/nlp/lexical')
+                print('Exception')
+                browser.get('https://www.sogou.com/')
+                time.sleep(0.1)
+                browser.close()
+                browser = webdriver.Firefox('D:/Program Files/Mozilla Firefox')
+                browser.get('http://ai.baidu.com/tech/nlp/lexical')
+                time.sleep(5)
 print('Done')
