@@ -74,3 +74,29 @@ with open('result.txt','a') as file1:
             print(output)
             
 print('Done')
+
+#爬取百度翻译
+# -*- coding: utf-8 -*-                  
+import os
+import requests
+import json
+url= 'http://fanyi.baidu.com/transapi/?aldtype=16047&from=zh&to=yue&query='
+i = 0
+with open('yueyu.txt','a') as file1:
+    with open('data.txt','r',encoding='utf-8') as file2:
+        data = file2.readlines()
+        diction = []
+        for line in data:
+            line = ' '.join(line[17:].strip().split())
+            diction.append(line)
+        diction = ' '.join(diction).split(' ')
+        diction = set(diction)
+        for element in diction:
+            r = requests.get(url+element)
+            output = json.loads(r.text)['data'][0]['dst']
+            file1.write(element+' '+output)
+            file1.write('\n')
+            file1.flush()
+            print(i,' 原文: '+element+' 翻译：'+output)
+            i += 1
+print('Done')
