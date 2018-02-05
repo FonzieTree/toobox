@@ -103,23 +103,33 @@ print('Done')
 
 #采用API+selenium爬取百度演示收费版的依存句法分词分析
 # -*- coding: utf-8 -*-                  
-import json                   
+# -*- coding: utf-8 -*-  
+import os                
+import json
+import time                   
 from selenium import webdriver              
-browser = webdriver.Firefox('../Mozilla Firefox')
+os.chdir(r'D:\wang\国家语委')
+browser = webdriver.Firefox('D:/Program Files/Mozilla Firefox')
 i = 0
 with open('result.txt','a') as file1:
     with open('data.txt','r',encoding='utf-8') as file2:
         data = file2.readlines()
         data = data[i:]
         for line in data:
-            try:
-                line = ''.join(line[17:].strip().split())
-                browser.get('http://ai.baidu.com/aidemo/?apiType=nlp&type=lexer&t1='+line)
+            status = 'failed'
+            while status != 'success' and status !="input empty":
+                req = ''.join(line[17:].strip().split())
+                browser.get('http://ai.baidu.com/aidemo/?apiType=nlp&type=lexer&t1='+req)
                 output= browser.find_elements_by_css_selector("pre")[0]
                 output = json.loads(output.text)
-                output = output['data']['items']
-                output = [o['item']+'/'+o['pos'] for o in output]
-                output = ' '.join(output)
-            except:
-                print('No')
+                result = output['data']
+                status = output['msg']			
+            result = result['items']
+            result = [o['item']+'/'+o['pos'] for o in result]
+            result = ' '.join(result)
+            print(i, result)
+            file1.write(result)
+            file1.write('\n')
+            file1.flush()
+            i += 1			
 print('Done')
