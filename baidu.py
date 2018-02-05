@@ -108,7 +108,7 @@ import os
 import json
 import time                   
 from selenium import webdriver              
-os.chdir(r'D:\wang\国家语委')
+os.chdir(r'...')
 browser = webdriver.Firefox('D:/Program Files/Mozilla Firefox')
 i = 0
 with open('result.txt','a') as file1:
