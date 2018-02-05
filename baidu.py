@@ -108,9 +108,9 @@ import os
 import json
 import time                   
 from selenium import webdriver              
-os.chdir(r'...')
+os.chdir(r'..')
 browser = webdriver.Firefox('D:/Program Files/Mozilla Firefox')
-i = 0
+i = 69679
 with open('result.txt','a') as file1:
     with open('data.txt','r',encoding='utf-8') as file2:
         data = file2.readlines()
@@ -131,5 +131,7 @@ with open('result.txt','a') as file1:
             file1.write(result)
             file1.write('\n')
             file1.flush()
-            i += 1			
+            i += 1
+            if i % 990 == 0:
+                time.sleep(360)		
 print('Done')
