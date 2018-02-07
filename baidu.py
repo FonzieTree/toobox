@@ -102,28 +102,36 @@ with open('yueyu.txt','a') as file1:
 print('Done')
 
 #采用API+selenium爬取百度演示收费版的依存句法分词分析
-# -*- coding: utf-8 -*-                  
 # -*- coding: utf-8 -*-  
 import os                
 import json
 import time                   
 from selenium import webdriver              
-os.chdir(r'..')
+os.chdir(r'...')
 browser = webdriver.Firefox('D:/Program Files/Mozilla Firefox')
-i = 69679
+i = 0
 with open('result.txt','a') as file1:
     with open('data.txt','r',encoding='utf-8') as file2:
         data = file2.readlines()
         data = data[i:]
         for line in data:
             status = 'failed'
+            j = 0
             while status != 'success' and status !="input empty":
                 req = ''.join(line[17:].strip().split())
-                browser.get('http://ai.baidu.com/aidemo/?apiType=nlp&type=lexer&t1='+req)
-                output= browser.find_elements_by_css_selector("pre")[0]
-                output = json.loads(output.text)
-                result = output['data']
-                status = output['msg']			
+                time.sleep(0.1)
+                try:
+                    browser.get('http://ai.baidu.com/aidemo/?apiType=nlp&type=lexer&t1='+req)
+                    output= browser.find_elements_by_css_selector("pre")[0]
+                    output = json.loads(output.text)
+                    result = output['data']
+                    status = output['msg']
+                    j += 1
+                    if j > 10:
+                        browser.get('https://www.sogou.com/')
+                        time.sleep(900)
+                except:
+                    pass
             result = result['items']
             result = [o['item']+'/'+o['pos'] for o in result]
             result = ' '.join(result)
@@ -131,7 +139,5 @@ with open('result.txt','a') as file1:
             file1.write(result)
             file1.write('\n')
             file1.flush()
-            i += 1
-            if i % 990 == 0:
-                time.sleep(360)		
+            i += 1	
 print('Done')
